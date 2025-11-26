@@ -1,5 +1,5 @@
-# Arduino_STM32 Priviledge violation and Fault cause
-## 1. STM32 priviledge and execute mode
+# Arduino_STM32 Privilege violation and Fault cause
+## 1. STM32 privilege and execute mode
 STM32 has several execute mode.
 
 ### STM32 Privilege Mode
@@ -57,7 +57,7 @@ By default, the processor starts in privileged thread mode at boot time. Switchi
 allowing non-privileged software to call privileged software functions using the SVC (Supervisor Call) instruction.
 
 ## 4. Simple test program fot Arduino IDE 1.8.8 + Arduino_STM32
-### `"BluePill-Pliviladge-Test.ino" for STM32F103C8T6`
+### `"BluePill-Plivilage-Test.ino" for STM32F103C8T6`
 ```
 #define LED_BUILTIN         PC13        // Define onBoard LED port
 
@@ -70,7 +70,7 @@ void setup() {
 
     Serial.begin(9600);
     while (!Serial) { delay(100); }
-    Serial.println("BluePill-Priviledge-Test");
+    Serial.println("BluePill-Privilege-Test");
 
     if (is_in_thread_mode()) {
         Serial.println("** Now execute in Thread mode.");
@@ -80,7 +80,7 @@ void setup() {
     if (is_in_privileged_thread_mode()) {
         Serial.println("** Now in Previlaged mode.");
     } else {
-        Serial.println("** Now in Unrevilaged mode.");
+        Serial.println("** Now in Unprevilaged mode.");
     }
     if (is_use_which_stack_pointer()) {
         Serial.println("** Now use MSP.");
@@ -166,11 +166,11 @@ uint32_t get_pc(void) {
 }
 ```
 ### Execute log
-`"BluePill-Priviledge-Test.log"`
+`"BluePill-Privilege-Test.log"`
 ```
-BluePill-Priviledge-Test
+BluePill-Privilege-Test
 ** Now execute in Thread mode.
-** Now in Unrevilaged mode.
+** Now in Unprivileged mode.
 ** Now use PSP.
 ** PRIMASK = 0x0
 ** BASEPRI = 0x0
